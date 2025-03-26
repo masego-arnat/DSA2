@@ -1,9 +1,9 @@
-class Node {
+class Lab05_A {
     int key;
-    Node left, right;
+    Lab05_A left, right;
     int height;
 
-    public Node(int d) {
+    public Lab05_A(int d) {
         key = d;
         left = right = null;
         height = 1;
@@ -13,23 +13,23 @@ class Node {
 
 
 class AVLTree {
-    Node root;
+    Lab05_A root;
 
-    int height(Node N) {
+    int height(Lab05_A N) {
         if (N == null)
             return 0;
         return N.height;
     }
 
-    int getBalance(Node N) {
+    int getBalance(Lab05_A N) {
         if (N == null)
             return 0;
         return height(N.left) - height(N.right);
     }
 
-    Node rightRotate(Node y) {
-        Node x = y.left;
-        Node T2 = x.right;
+    Lab05_A rightRotate(Lab05_A y) {
+        Lab05_A x = y.left;
+        Lab05_A T2 = x.right;
 
         x.right = y;
         y.left = T2;
@@ -40,9 +40,9 @@ class AVLTree {
         return x;
     }
 
-    Node leftRotate(Node x) {
-        Node y = x.right;
-        Node T2 = y.left;
+    Lab05_A leftRotate(Lab05_A x) {
+        Lab05_A y = x.right;
+        Lab05_A T2 = y.left;
 
         y.left = x;
         x.right = T2;
@@ -53,9 +53,9 @@ class AVLTree {
         return y;
     }
 
-    Node insert(Node node, int key) {
+    Lab05_A insert(Lab05_A node, int key) {
         if (node == null)
-            return (new Node(key));
+            return (new Lab05_A(key));
 
         if (key < node.key)
             node.left = insert(node.left, key);
@@ -84,7 +84,7 @@ class AVLTree {
         return node;
     }
 
-    void preOrder(Node node) {
+    void preOrder(Lab05_A node) {
         if (node != null) {
             System.out.print(node.key + " ");
             preOrder(node.left);
@@ -92,7 +92,7 @@ class AVLTree {
         }
     }
 
-    void inOrder(Node node) {
+    void inOrder(Lab05_A node) {
         if (node != null) {
             inOrder(node.left);
             System.out.print(node.key + " ");
@@ -100,7 +100,7 @@ class AVLTree {
         }
     }
 
-    void postOrder(Node node) {
+    void postOrder(Lab05_A node) {
         if (node != null) {
             postOrder(node.left);
             postOrder(node.right);
